@@ -6,7 +6,6 @@ import plotly.graph_objects as go
 from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
 from datetime import datetime as dt
-from PIL import Image
 
 ########################### Initial settings for the dashboard ####################################################
 
