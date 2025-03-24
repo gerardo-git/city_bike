@@ -6,7 +6,6 @@ import plotly.graph_objects as go
 from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
 from datetime import datetime as dt
-from numerizer import numerize
 from PIL import Image
 
 ########################### Initial settings for the dashboard ####################################################
@@ -40,8 +39,8 @@ if page == "Intro page":
     st.markdown("- Recommendations")
     st.markdown("The dropdown menu on the left 'Aspect Selector' will take you to the different aspects of the analysis our team looked at.")
 
-    myImage = Image.open("citi_bike.jpg") #source: https://www.nyc.gov/office-of-the-mayor/news/576-18/mayor-de-blasio-dramatic-expansion-citi-bike
-    st.image(myImage)
+#source: https://www.nyc.gov/office-of-the-mayor/news/576-18/mayor-de-blasio-dramatic-expansion-citi-bike
+    st.image("citi_bike.jpg")
 
 
     ### Create the dual axis line chart page ###
@@ -135,8 +134,8 @@ elif page == 'Interactive map with aggregated bike trips':
 else:
     
     st.header("Conclusions and recommendations")
-    bikes = Image.open("Citi_bike_single.png")  #source: https://www.glenwoodnyc.com/manhattan-living/citibike-bike-rental-nyc/
-    st.image(bikes)
+#source: https://www.glenwoodnyc.com/manhattan-living/citibike-bike-rental-nyc/
+    st.image("Citi_bike_single.png")
     st.markdown("### Our analysis has shown that CitiBike should focus on the following objectives moving forward:")
     st.markdown("- Add more stations to the locations around the water line, such as heater on the Lake, Streeter Dr/Grand Avenue, Millenium Park, Columbus Dr/Randolph Street, Shedd Aquarium, Michigan Avenue/Oak Street, Canal Street/Adams Street")
     st.markdown("- Ensure that bikes are fully stocked in all these stations during the warmer months in order to meet the higher demand, but provide a lower supply in winter and late autumn to reduce logistics costs")
