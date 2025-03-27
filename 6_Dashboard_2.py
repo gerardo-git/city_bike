@@ -136,5 +136,6 @@ else:
 #source: https://www.glenwoodnyc.com/manhattan-living/citibike-bike-rental-nyc/
     st.image("Citi_bike_single.png")
     st.markdown("### Our analysis has shown that CitiBike should focus on the following objectives moving forward:")
-    st.markdown("- Add more stations to the locations around the water line, such as heater on the Lake, Streeter Dr/Grand Avenue, Millenium Park, Columbus Dr/Randolph Street, Shedd Aquarium, Michigan Avenue/Oak Street, Canal Street/Adams Street")
-    st.markdown("- Ensure that bikes are fully stocked in all these stations during the warmer months in order to meet the higher demand, but provide a lower supply in winter and late autumn to reduce logistics costs")
+    st.markdown("- Add more stations to the locations in the specific hubs where the top 150 trips are grouped. Additionally")
+    st.markdown("- Adjust the bike stock seasonally. Less bikes on colder months and more bikes on warmer months. This reduces the operating costs and the general decay of bikes during the winter months.")
+    st.markdown("- Consider that some stations in touristic spots may not need to be interconnected but it is still a good idea to cover them. People may want to take a ride around a park near the suburbs recreationally even if this ride was a simple round trip.")
