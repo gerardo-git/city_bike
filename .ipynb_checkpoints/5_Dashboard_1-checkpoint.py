@@ -5,9 +5,10 @@ import pandas as pd
 import numpy as np
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+from keplergl import KeplerGl
 from streamlit_keplergl import keplergl_static
 from datetime import datetime as dt
-
+st.cache_data.clear()
 
 ########################### Initial settings for the dashboard ##################################################################
 
@@ -15,8 +16,8 @@ from datetime import datetime as dt
 st.set_page_config(page_title = 'Citi Bike - NYC Trip Analysis', layout='wide')
 st.title("Citi Bike - NYC Trip Analysis")
 
-st.markdown("This dashboard is meant to support Citibike in its data-driven decisions for the bike rental logistics in NYC")
-st.markdown("Currently, Citi bike runs into a situation where customers complain about bikes not being available at certain times. This analysis aims to look at the potential reasons behind this and showcase any other areas of opportunity.")
+st.markdown("This dashboard is meant to support CitiBike in its data-driven decisions for the bike rental logistics in NYC")
+st.markdown("Currently, CitiBike runs into a situation where customers complain about bikes not being available at certain times. This analysis aims to look at the potential reasons behind this and showcase any other areas of opportunity.")
 
 ########################## Import data ###########################################################################################
 
@@ -64,12 +65,19 @@ st.plotly_chart(fig_2, use_container_width=True)
 
 ### Add the map from the html file ###
 
-path_to_html = "Kepler Map Top 150 rides.html" 
+#path_to_html = "test_map.html" 
+#json_file_path = "kepler_J.json"
+#with open(json_file_path, 'r') as f:
+#            config = f.read()
+
+#map_ = KeplerGl(config=config)
+#keplergl_static(map_)
 
 # Read file and keep in variable
+path_to_html = "test_map.html" 
 with open(path_to_html,'r') as f: 
     html_data = f.read()
 
 ## Show in webpage
 st.header("Aggregated Bike Trips in New York")
-st.components.v1.html(html_data,height=1000)
+#st.components.v1.html(html_data,height=1500)

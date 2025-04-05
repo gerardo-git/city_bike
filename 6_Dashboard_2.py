@@ -23,6 +23,7 @@ page = st.sidebar.selectbox('Select an aspect of the analysis',
 ########################## Import data ###########################################################################################
 
 df = pd.read_csv('ny_city_small_data.csv', index_col = 0)
+df_starting_time = pd.read_csv('df_starting_time.csv', index_col = 0)
 
 ######################################### DEFINE THE PAGES #####################################################################
 
@@ -65,9 +66,31 @@ secondary_y=True
     legend={'font':{'size': 16}}    
 )
     st.plotly_chart(fig_2, use_container_width=True)
-    st.markdown("There is an clear correlation between the rise and drop of temperatures and the frequency of bike trips taken daily. As temperature decreases, so does bike usage. This insight indicates that the shortage problem may be prevalent merely in the warmer months, approximately from May to October. The day with maximum bike trips was September 21st and the one with the lowest trips was January 29th")
+    st.markdown("There is a clear correlation between the rise and drop of temperatures and the frequency of bike trips taken daily. As temperature decreases, so does bike usage. This insight indicates that the shortage problem may be prevalent merely in the warmer months, approximately from May to October.")
+    st.markdown("The day with maximum bike trips was September 21st and the one with the lowest trips was January 29th")
 
-### Most popular stations page
+
+    fig_t = go.Figure(go.Bar(x = df_starting_time['started_at'], y = df_starting_time['value'], marker={'color':df_starting_time['value'],'colorscale': 'Blues'}))
+
+    fig_t.update_layout(
+    title = {'text': 'Hourly Distribution of Bike Trips','font': {'size': 28, 'color': 'white'}},
+    xaxis=dict(
+        title='Time of Day (Hour)',
+        tickmode='linear',
+        tick0=0,
+        dtick=1
+    ),
+    yaxis_title ='Total trips',
+    width = 1400, height = 600
+)
+    st.plotly_chart(fig_t, use_container_width=True)
+    st.markdown("The chart shows the hourly distribution of bike trips in New York, revealing clear usage patterns tied to daily routines.")
+    st.markdown("There’s a **morning surge between 7 AM and 9 AM**, peaking at **8 AM**, which likely reflects commuters heading to work or school. Afterwards, usage remains **steady through the midday hours (10 AM – 3 PM)**, suggesting trips for errands, leisure, or flexible work schedules.")
+    st.markdown("The **highest volume occurs between 4 PM and 7 PM**, with a sharp peak at **5 PM**, aligning with the evening commute. This is the most active period of the day for bike usage.")
+    st.markdown("After 7 PM, trip counts **gradually decline**, and activity drops significantly **after 9 PM**, reaching the lowest levels between **12 AM and 5 AM**, likely due to reduced demand and safety concerns.")
+    st.markdown("Overall, the chart reflects a **typical commuter-driven pattern**, highlighting the importance of bike-sharing systems as a key part of New York City’s daily transportation—especially during rush hours.")
+
+
 
     # Create the season variable
 
@@ -117,10 +140,9 @@ elif page == 'Interactive map with aggregated bike trips':
     with open(path_to_html,'r') as f: 
         html_data = f.read()
 
-    ## Show in webpage - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  FILTER !!!!!!    WHERE   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    ## Show in webpage 
     st.header("Top 150 Bike Trips in New York")
     st.components.v1.html(html_data,height=1000)
-#    st.markdown("#### Using the filter on the left hand side of the map we can check whether the most popular start stations also appear in the most popular trips.")
     st.markdown("#### These were the top 5 most common trips:")
     st.markdown("- Central Park S & 6 Ave - Central Park S & 6 Ave (same station)") 
     st.markdown("- 7 Ave & Central Park South - 7 Ave & Central Park South (same station)")
