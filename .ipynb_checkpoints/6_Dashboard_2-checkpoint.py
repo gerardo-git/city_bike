@@ -33,8 +33,8 @@ df_starting_time = pd.read_csv('df_starting_time.csv', index_col = 0)
 if page == "Intro page":
     st.markdown("This dashboard is meant to support CitiBike in its data-driven decisions for the bike rental logistics in NYC")
     st.markdown("Currently, CitiBike runs into a situation where customers complain about bikes not being available at certain times. This analysis aims to look at the potential reasons behind this and showcase any other areas of opportunity. The dashboard is separated into 4 sections:")
-    st.markdown("- Most popular stations")
     st.markdown("- Weather component and bike usage")
+    st.markdown("- Most popular stations")
     st.markdown("- Interactive map with aggregated bike trips")
     st.markdown("- Recommendations")
     st.markdown("The dropdown menu on the left 'Aspect Selector' will take you to the different aspects of the analysis our team looked at.")
@@ -60,7 +60,7 @@ secondary_y=True
 )
 
     fig_2.update_layout(
-    title = {'text': 'Daily bike trips and temperatures in 2020','font': {'size': 30, 'color': 'white'}},
+    title = {'text': 'Daily bike trips and temperatures in 2022','font': {'size': 30, 'color': 'white'}},
     height = 600,
 
     legend={'font':{'size': 16}}    
@@ -85,13 +85,9 @@ secondary_y=True
 )
     st.plotly_chart(fig_t, use_container_width=True)
     st.markdown("The chart shows the hourly distribution of bike trips in New York, revealing clear usage patterns tied to daily routines.")
-
-    st.markdown("There’s a **morning surge between 7 AM and 9 AM**, peaking at **8 AM**, which likely reflects commuters heading to work or school. Afterward, usage remains **steady through the midday hours (10 AM – 3 PM)**, suggesting trips for errands, leisure, or flexible work schedules.")
-
+    st.markdown("There’s a **morning surge between 7 AM and 9 AM**, peaking at **8 AM**, which likely reflects commuters heading to work or school. Afterwards, usage remains **steady through the midday hours (10 AM – 3 PM)**, suggesting trips for errands, leisure, or flexible work schedules.")
     st.markdown("The **highest volume occurs between 4 PM and 7 PM**, with a sharp peak at **5 PM**, aligning with the evening commute. This is the most active period of the day for bike usage.")
-
     st.markdown("After 7 PM, trip counts **gradually decline**, and activity drops significantly **after 9 PM**, reaching the lowest levels between **12 AM and 5 AM**, likely due to reduced demand and safety concerns.")
-
     st.markdown("Overall, the chart reflects a **typical commuter-driven pattern**, highlighting the importance of bike-sharing systems as a key part of New York City’s daily transportation—especially during rush hours.")
 
 
@@ -138,7 +134,7 @@ elif page == 'Interactive map with aggregated bike trips':
 
     st.markdown("Interactive map showing aggregated bike trips over NY City")
 
-    path_to_html = "Kepler Map Top 150 rides.html"
+    path_to_html = "Kepler_Map_Top_150_rides.html"
 
     # Read file and keep in variable
     with open(path_to_html,'r') as f: 
@@ -162,6 +158,6 @@ else:
 #source: https://www.glenwoodnyc.com/manhattan-living/citibike-bike-rental-nyc/
     st.image("Citi_bike_single.png")
     st.markdown("### Our analysis has shown that CitiBike should focus on the following objectives moving forward:")
-    st.markdown("- Add more stations to the locations in the specific hubs where the top 150 trips are grouped. Additionally")
+    st.markdown("- Add more stations to the locations in the specific hubs where the top 150 trips are grouped.")
     st.markdown("- Adjust the bike stock seasonally. Less bikes on colder months and more bikes on warmer months. This reduces the operating costs and the general decay of bikes during the winter months.")
     st.markdown("- Consider that some stations in touristic spots may not need to be interconnected but it is still a good idea to cover them. People may want to take a ride around a park near the suburbs recreationally even if this ride was a simple round trip.")
